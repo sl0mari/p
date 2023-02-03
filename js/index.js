@@ -34,20 +34,19 @@ let gameFrame = 0;
 //anim speed
 const staggerFrames = 10;
 
-
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 console.log(bkgImage);
 
 function atan2Normalized(x, y) {
-  let radians = Math.atan2(x, y);
-  let degrees = (radians * 180) / Math.PI;
-  if (radians <= 0) {
-    degrees += 360;
-  }
-  degrees = (Math.atan2(y, x) * 180) / Math.PI;
+  // let radians = Math.atan2(x, y);
+  // let degrees = (radians * 180) / Math.PI;
+  // if (radians <= 0) {
+  //   degrees += 360;
+  // }
+  let degrees = (Math.atan2(y, x) * 180) / Math.PI;
   if (degrees >= 180) {
-    degrees = 450 - degrees;
+    degrees = 45 - degrees;
   } else {
     degrees = 90 - degrees;
   }
@@ -55,7 +54,7 @@ function atan2Normalized(x, y) {
 }
 
 function angleMath() {
-  //base movement off of offset character coordinates to center      head of character
+  //base movement off of offset character coordinates to center  head of character
   xD =
     mouse.x - (player.positionX + animState[player.stateType].frameWidth / 2);
   yD =
@@ -67,21 +66,20 @@ function angleMath() {
 }
 
 function moveCharacter() {
-  
   angleMath();
   checkDirection();
   stateCheck();
 
-  
   switch (true) {
     case hypotenuse <= animState[player.stateType].frameWidth / 2 ||
-    !mouse.present:
-    mouse.moved = false;
-    break;
-    case hypotenuse > animState[player.stateType].frameWidth / 8 && mouse.present:
-    mouse.moved = true;
-    break;
-  } 
+      !mouse.present:
+      mouse.moved = false;
+      break;
+    case hypotenuse > animState[player.stateType].frameWidth / 8 &&
+      mouse.present:
+      mouse.moved = true;
+      break;
+  }
 
   let deltaX = xD / hypotenuse;
   let deltaY = yD / hypotenuse;
@@ -108,9 +106,9 @@ mouse.moved = false;
 
 function animate() {
   bkgImage.onload = () => {
-    ctx.drawImage(bkgImage,750,750);
-}
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bkgImage, 750, 750);
+  };
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   canvas.addEventListener("mousemove", mouseMoveListener);
   function mouseMoveListener(e) {
     //get mouse coordinates within the canvas
@@ -137,13 +135,30 @@ function animate() {
   if (player.playerState == "walk") {
     directionY = walkAnimations[player.playerDirection].loc[position].y;
   }
-  if (player.playerState == "idle") {
-    directionY = idleAnimations[player.playerDirection].loc[position].y;
+  if (player.playerState == "attack") {
+    directionY = attackAnimations[player.playerDirection].loc[position].y;
   }
+
+  if (player.playerState == "quickStrick") {
+    directionY = quickStrikeAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "shoot") {
+    directionY = shootAnimations[player.playerDirection].loc[position].y;
+  }
+
   if (player.playerState == "shock") {
     directionY = shockAnimations[player.playerDirection].loc[position].y;
   }
- 
+
+  if (player.playerState == "sleep") {
+    directionY = sleepAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "idle") {
+    directionY = idleAnimations[player.playerDirection].loc[position].y;
+  }
+
   ctx.drawImage(
     animState[player.stateType].playerImage,
     frameX,
@@ -155,11 +170,9 @@ function animate() {
     animState[player.stateType].frameWidth,
     animState[player.stateType].frameHeight
   );
-  
 
   gameFrame++;
   requestAnimationFrame(animate);
 }
-
 
 animate();
