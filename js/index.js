@@ -155,8 +155,120 @@ function animate() {
     directionY = sleepAnimations[player.playerDirection].loc[position].y;
   }
 
+  if (player.playerState == "hurt") {
+    directionY = hurtAnimations[player.playerDirection].loc[position].y;
+  }
+
   if (player.playerState == "idle") {
     directionY = idleAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "swing") {
+    directionY = swingAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "double") {
+    directionY = doubleAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "hop") {
+    directionY = hopAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "charge") {
+    directionY = chargeAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "rotate") {
+    directionY = rotateAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "eventSleep") {
+    directionY = eventSleepAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "wake") {
+    directionY = wakeAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "eat") {
+    directionY = eatAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "tumble") {
+    directionY = tumbleAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "pose") {
+    directionY = poseAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "pull") {
+    directionY = pullAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "pain") {
+    directionY = painAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "float") {
+    directionY = floatAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "deepBreath") {
+    directionY = deepBreathAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "nod") {
+    directionY = nodAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "sit") {
+    directionY = sitAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "lookUp") {
+    directionY = lookUpAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "sink") {
+    directionY = sinkAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "trip") {
+    directionY = tripAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "laying") {
+    directionY = layingAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "leapForward") {
+    directionY = leapForwardAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "head") {
+    directionY = headAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "cringe") {
+    directionY = cringeAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "lostBalance") {
+    directionY = lostBalanceAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "tumbleBack") {
+    directionY = tumbleBackAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "faint") {
+    directionY = faintAnimations[player.playerDirection].loc[position].y;
+  }
+
+  if (player.playerState == "hitGround") {
+    directionY = hitGroundAnimations[player.playerDirection].loc[position].y;
   }
 
   ctx.drawImage(
