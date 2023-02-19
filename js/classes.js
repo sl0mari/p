@@ -132,7 +132,7 @@ const lookUpAnimations = [];
 const sinkAnimations = [];
 const tripAnimations = [];
 const layingAnimations = [];
-const leapForwardAnimations = [];
+const leapForthAnimations = [];
 const headAnimations = [];
 const cringeAnimations = [];
 const lostBalanceAnimations = [];
@@ -182,6 +182,13 @@ const animState = [
     frameWidth: 32,
     frameHeight: 40,
     playerImage: sleepAnim,
+  },
+  {
+    name: "hurt",
+    frames: 2,
+    frameWidth: 48,
+    frameHeight: 64,
+    playerImage: hurtAnim,
   },
   {
     name: "idle",
@@ -331,7 +338,7 @@ const animState = [
     playerImage: leapForthAnim,
   },
   {
-    name: "cring",
+    name: "cringe",
     frames: 2,
     frameWidth: 24,
     frameHeight: 64,
@@ -445,19 +452,10 @@ function stateCheck() {
     player.playerState = "walk";
     player.stateType = 0;
   }
-
-  if (mouse.present == false) {
-    player.playerState = "idle";
-    player.stateType = 1;
-  }
-  if (mouse.clicked == true) {
-    player.playerState = "shock";
-    player.stateType = 2;
-  }
 }
 
 function spriteMapping() {
-  for (let state = 0; state < 3; state++) {
+  for (let state = 0; state < 33; state++) {
     spriteDirections.map(function (x) {
       x.frames = animState[state];
       return x;
@@ -472,8 +470,38 @@ function spriteMapping() {
         frames.loc.push({ x: positionX, y: positionY });
       }
       if (state == 0) walkAnimations[face.name] = frames;
-      if (state == 1) idleAnimations[face.name] = frames;
-      if (state == 2) shockAnimations[face.name] = frames;
+      if (state == 1) attackAnimations[face.name] = frames;
+      if (state == 2) quickStrikeAnimations[face.name] = frames;
+      if (state == 3) shootAnimations[face.name] = frames;
+      if (state == 4) shockAnimations[face.name] = frames;
+      if (state == 5) sleepAnimations[face.name] = frames;
+      if (state == 6) hurtAnimations[face.name] = frames;
+      if (state == 7) idleAnimations[face.name] = frames;
+      if (state == 8) swingAnimations[face.name] = frames;
+      if (state == 9) doubleAnimations[face.name] = frames;
+      if (state == 10) hopAnimations[face.name] = frames;
+      if (state == 11) chargeAnimations[face.name] = frames;
+      if (state == 12) rotateAnimations[face.name] = frames;
+      if (state == 13) eventSleepAnimations[face.name] = frames;
+      if (state == 14) wakeAnimations[face.name] = frames;
+      if (state == 15) eatAnimations[face.name] = frames;
+      if (state == 16) tumbleAnimations[face.name] = frames;
+      if (state == 17) poseAnimations[face.name] = frames;
+      if (state == 18) pullAnimations[face.name] = frames;
+      if (state == 19) painAnimations[face.name] = frames;
+      if (state == 20) floatAnimations[face.name] = frames;
+      if (state == 21) deepBreathAnimations[face.name] = frames;
+      if (state == 22) sitAnimations[face.name] = frames;
+      if (state == 23) lookUpAnimations[face.name] = frames;
+      if (state == 24) sinkAnimations[face.name] = frames;
+      if (state == 25) tripAnimations[face.name] = frames;
+      if (state == 26) layingAnimations[face.name] = frames;
+      if (state == 27) leapForthAnimations[face.name] = frames;
+      if (state == 28) cringeAnimations[face.name] = frames;
+      if (state == 29) lostBalanceAnimations[face.name] = frames;
+      if (state == 30) tumbleBackAnimations[face.name] = frames;
+      if (state == 31) faintAnimations[face.name] = frames;
+      if (state == 32) hitGroundAnimations[face.name] = frames;
     });
   }
 }
