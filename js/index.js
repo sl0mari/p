@@ -39,11 +39,6 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 console.log(bkgImage);
 
 function atan2Normalized(x, y) {
-  // let radians = Math.atan2(x, y);
-  // let degrees = (radians * 180) / Math.PI;
-  // if (radians <= 0) {
-  //   degrees += 360;
-  // }
   let degrees = (Math.atan2(y, x) * 180) / Math.PI;
   if (degrees >= 180) {
     degrees = 45 - degrees;
@@ -247,10 +242,10 @@ function animate() {
   gameFrame++;
   requestAnimationFrame(animate);
 }
-
-animate();
-
-function poop() {
-  let poop;
-  for (var i = 0; i < poop.length; i++) {}
+function animateLoop() {
+  moveCharacter();
+  animate();
+  requestAnimationFrame(animateLoop);
 }
+animateLoop();
+animate();
